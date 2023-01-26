@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:11
+    restart: "always"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=unit_service_test
+      - POSTGRES_HOST_AUTH_METHOD=trust
+  auth:
+    image: unit_service
+    platform: linux/amd64
+    restart: "always"
+    ports:
+      - "10000:10000"
+    environment:
+      - POSTGRESQL_HOST=postgres

@@ -1,0 +1,47 @@
+syntax = "proto3";
+package test.art.unit;
+
+option go_package = "services";
+
+service UnitService {
+    rpc Create(CreateUnitRequest) returns (Unit);
+    rpc Update(UpdateUnitRequest) returns (Unit);
+    rpc Delete(DeleteUnitRequest) returns (Empty);
+
+    rpc GetUnit(GetUnitRequest) returns (Unit);
+    rpc GetUnits(GetUnitsRequest) returns (GetUnitsResponse);
+}
+
+message Empty {
+}
+
+message Unit {
+    string id = 1;
+    bytes data = 2;
+    int64 created_at = 3;
+}
+
+message CreateUnitRequest {
+    bytes data = 1;
+}
+
+message UpdateUnitRequest {
+    string id = 1;
+    bytes data = 2;
+}
+
+message DeleteUnitRequest {
+    string id = 1;
+}
+
+message GetUnitRequest {
+    string id = 1;
+}
+
+message GetUnitsRequest {
+    repeated string ids = 1;
+}
+
+message GetUnitsResponse {
+    repeated Unit units = 1;
+}
