@@ -10,7 +10,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=unit_service_test
       - POSTGRES_HOST_AUTH_METHOD=trust
-  auth:
+  unit_service:
     image: unit_service
     platform: linux/amd64
     restart: "always"
